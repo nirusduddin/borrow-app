@@ -14,7 +14,7 @@ class EquipmentCategoryResource extends Resource
 {
     protected static ?string $model = EquipmentCategory::class;
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-group';
-    protected static ?string $navigationLabel = 'หมวดหมู่อุปกรณ์';
+    protected static ?string $navigationLabel = 'หมวดหมู่';
 
     public static function form(Form $form): Form
     {

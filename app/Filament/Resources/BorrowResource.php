@@ -16,15 +16,11 @@ class BorrowResource extends Resource
 {
     protected static ?string $model = Borrow::class;
     protected static ?string $navigationIcon = 'heroicon-o-arrow-path-rounded-square';
-    protected static ?string $navigationLabel = 'Borrows';
+    protected static ?string $navigationLabel = 'ยืม-คืน';
 
     public static function form(Form $form): Form
     {
         return $form->schema([
-            Forms\Components\ColorPicker::make('color'),
-
-            Forms\Components\RichEditor::make('content'),
-
             Forms\Components\Select::make('user_id')
                 ->relationship('user', 'name')
                 ->label('ผู้ยืม')
