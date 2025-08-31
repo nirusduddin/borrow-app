@@ -27,9 +27,23 @@ class AdminPanelProvider extends PanelProvider
             ->id('admin')
             ->path('admin')
             ->login()
+            
+            // โลโก้/ชื่อแบรนด์
+            ->brandName('Borrow System')
+
+            // สีหลัก + โหมดมืด
             ->colors([
-                'primary' => Color::Amber,
+                'primary' => Color::hex('#10b981'), // emerald-500
+                'gray'    => Color::Slate,
             ])
+            ->darkMode(true)
+
+            // ใช้ฟอนต์ Kanit จาก Tailwind config
+            ->font('Kanit')
+
+            // ใช้ธีมที่เราเขียน
+            ->viteTheme('resources/css/filament/theme.css')
+
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\\Filament\\Pages')
             ->pages([

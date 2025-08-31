@@ -1,20 +1,23 @@
-import defaultTheme from 'tailwindcss/defaultTheme';
+// tailwind.config.js
+import preset from './vendor/filament/filament/tailwind.config.preset.js'
+// บางโปรเจกต์ใช้ path นี้:
+// import preset from './vendor/filament/support/tailwind.config.preset.js'
 
-/** @type {import('tailwindcss').Config} */
 export default {
-    content: [
-        './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php',
-        './storage/framework/views/*.php',
-        './resources/**/*.blade.php',
-        './resources/**/*.js',
-        './resources/**/*.vue',
-    ],
-    theme: {
-        extend: {
-            fontFamily: {
-                sans: ['Figtree', ...defaultTheme.fontFamily.sans],
-            },
-        },
+  presets: [preset],
+  content: [
+    './resources/**/*.blade.php',
+    './resources/**/*.js',
+    './resources/**/*.ts',
+    './app/Filament/**/*.php',
+    './vendor/filament/**/*.blade.php',
+  ],
+  theme: {
+    extend: {
+      fontFamily: {
+        sans: ['Kanit', 'system-ui', 'ui-sans-serif', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'Noto Sans Thai', 'sans-serif'],
+      },
     },
-    plugins: [],
-};
+  },
+  plugins: [],
+}

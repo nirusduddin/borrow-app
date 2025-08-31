@@ -22,7 +22,7 @@ class EquipmentResource extends Resource
             Forms\Components\Select::make('equipment_category_id')
                 ->relationship('category', 'name')
                 ->label('หมวดหมู่')
-                ->searchable()
+                //->searchable()
                 ->preload()
                 ->required(),
 
