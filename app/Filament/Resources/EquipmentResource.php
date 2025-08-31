@@ -122,4 +122,29 @@ class EquipmentResource extends Resource
             'edit'   => Pages\EditEquipment::route('/{record}/edit'),
         ];
     }
+
+    public static function shouldRegisterNavigation(): bool
+    {
+        return auth()->check() && auth()->user()->can('view equipment');
+    }
+
+    public static function canViewAny(): bool
+    {
+        return auth()->user()->can('view equipment');
+    }
+
+    public static function canCreate(): bool
+    {
+        return auth()->user()->can('create equipment');
+    }
+
+    public static function canEdit($record): bool
+    {
+        return auth()->user()->can('edit equipment');
+    }
+
+    public static function canDelete($record): bool
+    {
+        return auth()->user()->can('delete equipment');
+    }
 }

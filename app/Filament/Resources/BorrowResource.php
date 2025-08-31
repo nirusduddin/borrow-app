@@ -96,19 +96,19 @@ class BorrowResource extends Resource
                     ->sortable(),
             ])
             ->filters([
-                // Tables\Filters\Filter::make('period')
-                //     ->label('ช่วงวันที่ยืม')
-                //     ->form([
-                //         Forms\Components\DatePicker::make('from')->label('จาก'),
-                //         Forms\Components\DatePicker::make('to')->label('ถึง'),
-                //     ])
-                //     ->query(function ($query, array $data) {
-                //         $from = $data['from'] ?? null;
-                //         $to   = $data['to'] ?? null;
-                //         if ($from) $query->whereDate('borrowed_at', '>=', $from);
-                //         if ($to)   $query->whereDate('borrowed_at', '<=', $to);
-                //         return $query;
-                //     }),
+                Tables\Filters\Filter::make('period')
+                    ->label('ช่วงวันที่ยืม')
+                    ->form([
+                        Forms\Components\DatePicker::make('from')->label('จาก'),
+                        Forms\Components\DatePicker::make('to')->label('ถึง'),
+                    ])
+                    ->query(function ($query, array $data) {
+                        $from = $data['from'] ?? null;
+                        $to   = $data['to'] ?? null;
+                        if ($from) $query->whereDate('borrowed_at', '>=', $from);
+                        if ($to)   $query->whereDate('borrowed_at', '<=', $to);
+                        return $query;
+                    }),
 
                 Tables\Filters\SelectFilter::make('status')
                     ->label('สถานะ')
@@ -124,8 +124,8 @@ class BorrowResource extends Resource
                 Tables\Actions\Action::make('return')
                     ->label('คืน')
                     ->icon('heroicon-o-arrow-uturn-left')
-                    //->requiresConfirmation()
-                    ->visible(fn (Borrow $record) => $record->returned_at === null)
+                    ->requiresConfirmation()
+                    ->visible(fn ($record) => $record->returned_at === null && auth()->user()->can('return borrows'))
                     ->action(function (Borrow $record) {
                         DB::transaction(function () use ($record) {
                             $record->refresh(); // กันข้อมูลค้าง
@@ -153,5 +153,30 @@ class BorrowResource extends Resource
             'create' => Pages\CreateBorrow::route('/create'),
             'edit'   => Pages\EditBorrow::route('/{record}/edit'),
         ];
+    }
+
+    public static function shouldRegisterNavigation(): bool
+    {
+        return auth()->check() && auth()->user()->can('view borrows');
+    }
+
+    public static function canViewAny(): bool
+    {
+        return auth()->user()->can('view borrows');
+    }
+
+    public static function canCreate(): bool
+    {
+        return auth()->user()->can('create borrows');
+    }
+
+    public static function canEdit($record): bool
+    {
+        return auth()->user()->can('edit borrows');
+    }
+
+    public static function canDelete($record): bool
+    {
+        return auth()->user()->can('delete borrows');
     }
 }

@@ -55,4 +55,29 @@ class EquipmentCategoryResource extends Resource
             'edit'   => Pages\EditEquipmentCategory::route('/{record}/edit'),
         ];
     }
+
+    public static function shouldRegisterNavigation(): bool
+    {
+        return auth()->check() && auth()->user()->can('view equipment_categories');
+    }
+
+    public static function canViewAny(): bool
+    {
+        return auth()->user()->can('view equipment_categories');
+    }
+
+    public static function canCreate(): bool
+    {
+        return auth()->user()->can('create equipment_categories');
+    }
+
+    public static function canEdit($record): bool
+    {
+        return auth()->user()->can('edit equipment_categories');
+    }
+
+    public static function canDelete($record): bool
+    {
+        return auth()->user()->can('delete equipment_categories');
+    }
 }

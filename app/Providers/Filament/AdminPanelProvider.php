@@ -53,6 +53,9 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->authMiddleware([
                 Authenticate::class,
+                'can.view.admin', // ใช้ alias ที่ลงทะเบียนไว้
             ]);
     }
+
+    
 }
