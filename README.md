@@ -14,3 +14,7 @@
 ### Admin
 Username: `admin@example.com`
 Password: `admin`
+
+### User (Viewer)
+Username: `user@example.com`
+Password: `user`
