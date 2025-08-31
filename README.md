@@ -9,3 +9,8 @@
 7. รันคำสั่ง ```php artisan db:seed``` เพื่อสร้างตัวอย่างข้อมูล
 8. รันคำสั่ง ```php artisan storage:link``` เพื่อสร้าง symlink
 9. รันคำสั่ง ```php artisan serve```
+10. เรียก http://localhost:8000
+
+### Admin
+Username: `admin@example.com`
+Password: `admin`
