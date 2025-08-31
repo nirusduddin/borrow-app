@@ -1,6 +1,6 @@
 ### วิธีติดตั้ง
 1. เปิด `cmd` หรือ `terminal` เพื่อ clone project
-   ```git clone https://github.com/nirusduddinmateh/ws-borrow-app.git```
+   ```git clone https://github.com/nirusduddin/borrow-app.git```
 2. เมื่อ clone เสร็จแล้วให้เข้าไป folder project คลิกขวา เลือก Git Bash Here
 3. รันคำสั่ง ```composer update```
 4. ให้สร้างฐานข้อมูลชื่อ borrow_db ผ่าน phpMyAdmin หรือ อื่นๆ ที่สามารถสร้างฐานข้อมูลได้
